@@ -1,5 +1,5 @@
 # Name of your Slack (Deprecated in favour of the SLACK_NAME env var)
-slack_name: rands-leadership
+slack_name: null
 
 # Name of environment variable holding a valid Slackbot API token
 slackbot_api_token_env_varname: SB_TOKEN
@@ -18,7 +18,7 @@ output_debug_env_varname: DESTALINATOR_SLACK_VERBOSE
 
 # Name of environment variable for the earliest date to archive stale channels.
 # If this is set, it should be of the form "yyyy-mm-dd" (e.g. "2017-02-19").
-earliest_archive_date_env_varname: EARLIEST_ARCHIVE_DATE
+earliest_archive_date_env_varname: DESTALINATOR_EARLIEST_ARCHIVE_DATE
 
 # What should the bot's name be when it posts?
 bot_name: "destalinator"
@@ -27,30 +27,36 @@ bot_name: "destalinator"
 bot_avatar_url: "https://s3-us-west-1.amazonaws.com/eng-management-docs/bread.png"
 
 # Days of silence before we warn a channel it's going to be archived
-warn_threshold: 30
+warn_threshold: 50
 
 # Days of silence before we auto-archive a channel
 archive_threshold: 60
 
 # Where should we post "general" announcement messages?
-general_message_channel: "general"
+general_message_channel: "slack-meta"
 
 # Where should we announce new channels?
-announce_channel: "zmeta-new-channels"
+announce_channel: "slack-new-channels"
 
 # Where do we send control messages?
-control_channel: "zmeta-control"
+control_channel: "slack-control"
 
 # Where to send destalinator debug logs
-log_channel: "destalinator-log"
+log_channel: "slack-cleanup-log"
 
 # Channels to ignore when archiving (i.e. they can be silent and not get archived)
 ignore_channels:
-  - destalinator-log
+  - slack-cleanup-log
+  - uacf-jenkins
+  - i-am-mike-lee-ama
+  - general-nacf
+  - fitness-specs-wg
+  - snowsports
+  - kuanicles-of-kuan
 
 # Regular expression patterns for additional channels to ignore during archiving
 ignore_channel_patterns:
-  - ^zmeta-
+  - ^slack-
 
 # Users to ignore when considering if a channel is stale
 ignore_users:
